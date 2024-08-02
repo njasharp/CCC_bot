@@ -5,6 +5,7 @@ from groq import Groq
 
 
 #GROQ_API_KEY = #"hidden"
+# Define the HTML to embed the video with specific dimensions
 
 # Initialize the Groq client with the API key from environment variable
 client = Groq(
@@ -12,7 +13,8 @@ client = Groq(
 )
 
 # Streamlit app
-st.image("face1.png", width=280)
+st.video("ros3a.mp4")
+#st.image("face1.png", width=280)
 st.title("Welcome to CC Chat AI")
 
 st.sidebar.image("logo1.png", width=200)
