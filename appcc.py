@@ -12,7 +12,7 @@ client = Groq(
     api_key=os.environ.get("GROQ_API_KEY"),
 )
 col1,col2=st.columns([2,2])
-'numbers represent size'
+
     
 with col1:
     
