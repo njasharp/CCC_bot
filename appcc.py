@@ -11,9 +11,14 @@ from groq import Groq
 client = Groq(
     api_key=os.environ.get("GROQ_API_KEY"),
 )
-
+col1,col2=st.columns([2,2])
+'numbers represent size'
+    
+with col1:
+    
+    st.video("ros3a.mp4")
 # Streamlit app
-st.video("ros3a.mp4")
+
 #st.image("face1.png", width=280)
 st.title("Welcome to CC Chat AI")
 
