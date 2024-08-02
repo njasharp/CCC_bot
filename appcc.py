@@ -18,6 +18,8 @@ with col1:
     
     st.video("ros3a.mp4")
 # Streamlit app
+with col2:
+    st.image("r1a.png", width=320)
 
 #st.image("face1.png", width=280)
 st.title("Welcome to CC Chat AI")
