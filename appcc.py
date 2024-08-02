@@ -91,7 +91,7 @@ if st.sidebar.button("Submit"):
 
 # Reset button
 if st.sidebar.button("Reset"):
-    st.experimental_rerun()
+    st.rerun()
 
 # Instructions
 st.write("Enter a system prompt (optional) and a user prompt in the sidebar, then click 'Submit' to get a response from the LLM.")
