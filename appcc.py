@@ -24,7 +24,7 @@ client = Groq(
 
 
 
-st.image("bkade.png")
+st.image("bkade.PNG")
 
 st.title("Welcome to custom Chat AI")
 
