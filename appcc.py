@@ -85,7 +85,7 @@ def query_groq(system_prompt, combined_prompt):
         return None
 
 # Button to submit the query
-if st.sidebar.button("Submit"):
+if st.sidebar.write("Submit"):
     if prompt or file_content:
         with st.spinner("Querying the chatbot..."):
             # Combine file content and user prompt
