@@ -25,6 +25,11 @@ client = Groq(
 
 
 st.image("bkade.JPG")
+st.write(“Beginners to Expert - Understanding Prompts: A Comprehensive Guide to Enhancing AI”)
+st.write(“Model Performance and Achieving Accurate Results Kindle Edition”)
+st.write(“Live now on amazon “)
+st.write(“https://www.amazon.com/dp/B0DCH5C3F6/ref=sr_1_1
+“)
 
 st.title("Welcome to custom Chat AI")
 
