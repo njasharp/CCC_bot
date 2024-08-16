@@ -23,7 +23,7 @@ csv_files = [
 st.title("CSV Data Viewer")
 
 # Display header image
-header_image_path = os.path.join(csv_folder, "image.png")
+header_image_path = os.path.join(csv_folder, "image.PNG")
 if os.path.exists(header_image_path):
     st.image(header_image_path)
 else:
