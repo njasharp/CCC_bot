@@ -44,6 +44,17 @@ st.write("")  # Extra line space
 st.write("")  # Extra line space
 st.image("p1.png")
 
+# Function to display glossary
+def glossary_section():
+    with st.sidebar.expander("Glossary of Terms"):
+        st.write("""
+        - **Dream Score**: How desirable the dream outcome of an offer is (1-10).
+        - **Success Score**: Likelihood of achieving the outcome (1-100).
+        - **Time Score**: Time delay between the purchase and outcome (1-100).
+        - **Effort Score**: The effort and sacrifice needed to achieve the outcome (1-100).
+        - **Temperature**: Controls randomness in model output (0.0 = deterministic, 1.0 = more random).
+        """)
+
 # Main app function
 def main():
     st.write("This tool allows users to evaluate and optimize their business offers using Alex Hormozi's framework, providing actionable insights based on user inputs and selected analysis prompts.")
@@ -55,8 +66,8 @@ def main():
     target_audience = st.text_input("Target Audience:")
     dream_outcome = st.text_input("Dream Outcome:")
 
-
-
+    # Glossary section
+    glossary_section()
 
     # Model selection and temperature adjustment
     st.sidebar.header("Model Settings")
@@ -73,13 +84,12 @@ def main():
         key="temperature_slider"
     )
 
-    
-    # Prompt selection
+    # Prompt selection and score sliders
     st.sidebar.header("Select Analysis Prompt")
-    prompt_option = st.sidebar.selectbox("Choose a prompt", ["$100M Offer Validation", "Generic Offer Validation"])#  Slider inputs for scores
+    prompt_option = st.sidebar.selectbox("Choose a prompt", ["$100M Offer Validation", "Generic Offer Validation"])
     dream_score = st.sidebar.slider("Dream Score (1-10) = (Desirability)", 1, 10, 5)
-    success_score = st.sidebar.slider("Success Score (1-100) =  (Likelihood of Achievement)", 1, 100, 50)
-    time_score = st.sidebar.slider("Time Score (1-100) = Time Score (Time Delay)", 1, 100, 50)
+    success_score = st.sidebar.slider("Success Score (1-100) = (Likelihood of Achievement)", 1, 100, 50)
+    time_score = st.sidebar.slider("Time Score (1-100) = Time Delay", 1, 100, 50)
     effort_score = st.sidebar.slider("Effort Score (1-100) = (Effort and Sacrifice)", 1, 100, 50)
 
     if st.sidebar.button("Validate Business"):
@@ -105,7 +115,6 @@ How high is the offer's perceived effort and sacrifice on a scale of 1 to 100? T
 
 After rating each of the 4 points mentioned above, calculate an 'offer score'. Provide actionable advice on how I can improve my offer.
 """
-
             elif prompt_option == "Generic Offer Validation":
                 prompt = f"""Assume the role of an expert analyst tasked with evaluating any given offer using a generalized version of Alex Hormozi’s offer value calculation formula.
 
@@ -135,9 +144,11 @@ Provide actionable advice on how to enhance each component of the offer to maxim
             # Query the LLM with the prepared prompt
             messages = [{"role": "user", "content": prompt}]
             response = query_groq_with_retry(messages, model=model_id, temperature=st.session_state["temperature"])
-            
+
             st.success("Validation Result:")
             st.text_area("Recommendations:", value=response, height=800)
+
 st.sidebar.info("built by dw 9-20-24")
+
 if __name__ == "__main__":
     main()
